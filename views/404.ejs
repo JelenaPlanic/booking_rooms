@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
+    <base href="/">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<meta name="description" content="Responsive Admin Template" />
@@ -21,34 +22,24 @@
 
 <body>
 	<div class="limiter">
-		<div class="container-login100 page-background" >
+		<div class="container-login100 page-background">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="post" action="/auth/login">
+				<form class="form-404">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-flower"></i>
 					</span>
-					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+					<span class="form404-title p-b-34 p-t-27">
+						Error 404
 					</span>
-					<div class="wrap-input100 validate-input" data-validate="Enter email">
-						<input class="input100" type="email" name="email" placeholder="Email">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-					</div>
+					<p class="content-404">The page you are looking for does't exist or an other error occurred.</p>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
+						<a class="login100-form-btn" href="/">
+							Go to home page
+						<a>
 					</div>
-					<div class="text-center p-t-90">
-						<a class="txt1" href="/forgotPassword">
-							Forgot Password?
-						</a><br>
-                        <a class="txt1" href="/">
-							I don't have account?
+					<div class="text-center p-t-27">
+						<a class="txt1" href="#">
+							Need Help?
 						</a>
 					</div>
 				</form>
