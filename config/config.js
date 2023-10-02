@@ -5,6 +5,8 @@ const roles =  // poverljivo
 }
 
 const DEFAULT_USER_IMAGE = "user_avatar.png";
-const UPLOAD_DIR ="/upload/";
+const DEFAULT_ROOM_IMAGE = "room.jpg";
+const UPLOAD_DIR ="./public/upload/";
+const ROOM_TYPE =["Single", "Double", "Quad", "King", "Suite", "Villa", "Apartments"];
 
-module.exports = {roles, DEFAULT_USER_IMAGE};
+module.exports = {roles, DEFAULT_USER_IMAGE, DEFAULT_ROOM_IMAGE, UPLOAD_DIR, ROOM_TYPE};

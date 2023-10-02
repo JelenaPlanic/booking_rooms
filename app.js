@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const fileupload = require("express-fileupload");
 const app = express();
 
 const {PORT = 3001} = process.env;  // destrukcija sa dif vrednoscu
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 app.set("view engine", "ejs");
 
+app.use(fileupload()); //NOVO
 app.use(session({ // middleware
     name: process.env.SESSION_NAME,
     secret : process.env.SESSION_SECRET, //crypto.createHash("sha256").digest("base64")
