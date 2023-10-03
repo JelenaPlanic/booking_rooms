@@ -1,60 +1,30 @@
-const KB = 1024; //kb ima bajtova
-const MB = 1024 * KB; //
-const VALID_TYPE = ["jpeg","jpg","png"];
-const {UPLOAD_DIR} = require("../../config/config");
-const fs = require("fs");
+const fileUpload = require("../../lib/fileUpload"); // asihrona f-ja
+const RoomModel = require("../../models/RoomModel"); // baza
 
-const addRoom = (req, res) => {
+const addRoom = async (req, res) => {
+
     const inputData = req.body;
     const file = req.files; // mora da se instalira  express-fileupload, zbog formi i atributa enctype="multipart/form-data"
 
-    console.log(inputData);
-    console.log(file);
+    console.log("Room:", inputData);
+    console.log("File:",file); //  <input type="file"> forma
 
-
-    let error = [];
-
-    // kako da upload sliku? dobila sam iz req.files object!
-    // validacija slike:
-    let {name, size } = file.image;
-    let mimetype = file.image.mimetype.split("/")[1];
-
-    if(size > 3* MB) // size je u bajtovima, dobijam koliko je 3 mb u bajtovima
+    try
     {
-        error.push("File is too big!");
+        let fileName = await fileUpload(file);
+        let newRoom = new RoomModel({...inputData, image:fileName});
+        await newRoom.save();
+        res.redirect(req.headers.referer); //  // kako ja da znam odakle sam uputio req, mozda hocu da ga redirekt na istu stranicu!
     }
-    if(!VALID_TYPE.includes(mimetype))
+    catch(error)
     {
-        error.push("File is not valid type!");
-    }
-
-    if(fs.existsSync(UPLOAD_DIR))
-    {
-        console.log("postoji");
-    }
-
-    if(error.length === 0) // ovde uploadujem sliku
-    {
-        // metoda da taj file sacuvamo negde na serveru, u direktorijumu:
-        file.image.mv(UPLOAD_DIR +"/" + name, (err) => { // 1. arg lokacija dire
-            if(err)
-            {
-                console.log(err);
-                res.render("error", {error: error});
-            }
-            else
-            {
-                  // kako ja da znam odakle sam uputio req, mozda hocu da ga redirekt na istu stranicu!
-                 res.redirect(req.headers.referer);
-            }
-        })       
-    }
-    else
-    {
-        console.log(error);
-        res.render("error", {error: error});
-    }
+        res.render("error", {error: error.message});
+    }  
 
 };
 
 module.exports = addRoom;
+
+// Modul express-fileupload:
+// Ovaj modul omogućava Express.js aplikaciji da lakše obradi datoteke koje su poslate putem HTML forme sa input poljem tipa file.
+// Bez ovog modula, Express ne bi automatski razumeo kako da obrađuje datoteke iz takvih zahteva.
