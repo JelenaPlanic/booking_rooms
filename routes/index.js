@@ -14,6 +14,7 @@ router.get("/login", (req, res)=>{ // staticna ruta
 router.use("/auth", require("./auth"));
 router.use("/dashboard",verifyAuth, require("./dashboard"));
 router.use("/room", require("./room"));
+router.use("/staff", require("./staff"));
 
 
 // bvz URL ADRESA: ruta koja ne postoji, da mi renderuje view 404

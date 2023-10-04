@@ -11,6 +11,7 @@ const UserSchema = new Schema({
     gender : {type: String, default: null},
     address: {type: String, default: null},
     role :{type: String, default: roles.USER},
+    birthDate :{type: String, default: null},
     image : {type:String, default: DEFAULT_USER_IMAGE}, // da ima dif sliku
     joiningDate : {type:String, default: ()=>{
     
