@@ -1,0 +1,77 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar', {user}) %>
+<%- include('partials/sidebar') %>
+
+
+	<!-- start page content  za svaki view ovaj content se menja!-->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="page-bar">
+                <div class="page-title-breadcrumb">
+                    <div class=" pull-left">
+                        <div class="page-title">Profile</div>
+                    </div>
+                    <ol class="breadcrumb page-breadcrumb pull-right">
+                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                                href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                        </li>
+                        <li class="active">Profile</li>
+                    </ol>
+                </div>
+            </div>
+           
+       <!--ADD CONTENT HERE-->
+      <%- include('partials/profileSidebar', {user}) %>
+      <div class="profile-content">
+        <div class="row">
+
+            <%- include('partials/profileNavBar',{page: "about"}) %>
+
+            <!--MENJA SE CONTENT:-->
+            <div class="white-box">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane active fontawesome-demo" id="tab1">
+                    <div id="biography">
+                      <div class="row">
+                        <div class="col-md-3 col-6 b-r">
+                          <strong>Full Name</strong>
+                          <br />
+                          <p class="text-muted">
+                            <%= user.firstName %> <%= user.lastName %>
+                          </p>
+                        </div>
+                        <div class="col-md-3 col-6 b-r">
+                          <strong>Mobile</strong>
+                          <br />
+                          <p class="text-muted"><%= user.mobile %></p>
+                        </div>
+                        <div class="col-md-3 col-6 b-r">
+                          <strong>Email</strong>
+                          <br />
+                          <p class="text-muted"><%= user.email %></p>
+                        </div>
+                        <div class="col-md-3 col-6">
+                          <strong>Address</strong>
+                          <br />
+                          <p class="text-muted"><%= user.address %></p>
+                        </div>
+                      </div>
+                      <hr />
+                      <p class="m-t-30">
+                       <%= user.description %>
+                      </p>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <!-- ADD CONTENT HERE -->
+              </div>
+            </div>
+            <!-- end page content -->
+            <%- include('partials/footer.ejs') %>
+          </div>
+        </div>
+      </div>
+      

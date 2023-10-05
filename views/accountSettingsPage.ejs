@@ -1,0 +1,152 @@
+<%- include('partials/head') %>
+    <%- include('partials/navbar', {user}) %>
+        <%- include('partials/sidebar') %>
+
+
+            <!-- start page content  za svaki view ovaj content se menja!-->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">Settings</div>
+                            </div>
+                            <ol class="breadcrumb page-breadcrumb pull-right">
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                                        href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                                </li>
+                                <li class="active">Settings</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!--ADD CONTENT HERE-->
+                    <%- include('partials/profileSidebar', {user}) %>
+                        <div class="profile-content">
+                            <div class="row">
+                                <%- include('partials/profileNavBar',{page: "settings" }) %>
+                                <div class="white-box">
+                                <form class="card-body row" method="post" action="/admin/profile/update/" enctype="multipart/form-data"> 
+                                    <!--mora da se doda ovaj atribut zbog slika (enctype) forma moze da pokupi sliku, input 
+                                    polje type file da mozemo da ga koristimo-->
+                                    <div class="col-lg-6 p-t-20">
+                                        <div
+                                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                            <input class="mdl-textfield__input" type="text" value="<%= user.firstName %>" name="firstName"
+                                                id="txtFirstName">
+                                            <label class="mdl-textfield__label">First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 p-t-20">
+                                        <div
+                                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                            <input class="mdl-textfield__input" type="text" value="<%= user.lastName %>" name="lastName"
+                                                id="txtLasttName">
+                                            <label class="mdl-textfield__label">Last Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 p-t-20">
+                                        <div
+                                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                            <input class="mdl-textfield__input" type="email" id="txtemail"
+                                                value="<%= user.email %>" disabled>
+                                                 <!--ne stavljam name atribut za email, plus dodajem disabled-->
+                                            <label class="mdl-textfield__label">Email</label>
+                                            <span class="mdl-textfield__error">Enter Valid Email Address!</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 p-t-20">
+                                        <div
+                                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                            <input class="mdl-textfield__input" type="text" id="date"
+                                                value="<%= user.createdAt %>" disabled><!--ne menjamo-->
+                                            <label class="mdl-textfield__label">Joining Date</label>
+                                        </div>
+                                    </div>
+                                
+                                
+                                    <div class="col-lg-6 p-t-20">
+                                        <div
+                                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                            <input class="mdl-textfield__input" type="text" id="role"
+                                                value="<%= user.role %>" disabled><!--ne menja-->
+                                            <label class="mdl-textfield__label">Role</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 p-t-20">
+                                        <div
+                                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
+                                            <input class="mdl-textfield__input" type="text" id="sample2" value="<%= user.gender %>"
+                                            name="gender"
+                                                readonly tabIndex="-1">
+                                            <label for="sample2" class="pull-right margin-0">
+                                                <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                                            </label>
+                                            <label for="sample2" class="mdl-textfield__label">Gender</label>
+                                            <ul data-mdl-for="sample2"
+                                                class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                                <li class="mdl-menu__item" data-val="DE">Male</li>
+                                                <li class="mdl-menu__item" data-val="BY">Female</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 p-t-20">
+                                        <div
+                                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                            <input class="mdl-textfield__input" type="text" value="<%= user.phone %>" name="phone"
+                                                pattern="-?[0-9]*(\.[0-9]+)?" id="text5">
+                                            <label class="mdl-textfield__label" for="text5">Mobile Number</label>
+                                            <span class="mdl-textfield__error">Number required!</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 p-t-20">
+                                        <div
+                                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                            <input class="mdl-textfield__input" type="text" id="date2"
+                                                value="<%= user.birthDate %>" name="birthDate">
+                                            <label class="mdl-textfield__label">Birth Date</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 p-t-20">
+                                        <div class="mdl-textfield mdl-js-textfield txt-full-width">
+                                            <textarea class="mdl-textfield__input" rows="4" name="address" 
+                                                id="text7"><%= user.address %></textarea>
+                                            <label class="mdl-textfield__label" for="text7">Address</label>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-12 p-t-20">
+                                        <div class="mdl-textfield mdl-js-textfield txt-full-width">
+                                            <textarea class="mdl-textfield__input" rows="4" name="about" 
+                                                id="text8"><%= user.about %></textarea>
+                                            <label class="mdl-textfield__label" for="text8">About me</label>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-12 p-t-20">              
+                                                <label for="inputFile" class="d-flex justify-content-start align-items-center gap-3 cursor-pointer"
+                                                >
+                                                    <span class="control-label ">Upload Profile Image</span>
+                                                    <i class="material-icons">cloud_upload</i>         
+                                                </label>
+                                                 <input type="file" name="profile" class="d-none" id="inputFile"> <!--dodat input!-->  
+                                                 <input type="text" name="oldProfile" class="d-none" value="<%= user.profile %>"> <!--dodat input!--> 
+                                    </div>
+                                 
+                                    <div class="col-lg-12 p-t-20 text-center">
+                                        <button type="submit"
+                                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
+                                        <button type="button"
+                                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Cancel</button>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                            <!-- ADD CONTENT HERE -->
+                        </div>
+                </div>
+                <!-- end page content -->
+                <%- include('partials/footer.ejs') %>
+            </div>
+            </div>
+            </div>

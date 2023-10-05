@@ -1,0 +1,62 @@
+<!-- BEGIN PROFILE SIDEBAR -->
+<div class="profile-sidebar">
+    <div class="card card-topline-aqua">
+      <div class="card-body no-padding height-9">
+        <div class="row">
+          <div class="profile-userpic">
+            <img src="upload/<%= user.image %>" class="img-responsive" alt="" />
+          </div>
+        </div>
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <%= user.firstName %> <%= user.lastName %>
+          </div>
+          <div class="profile-usertitle-job"><%= user.role %></div>
+        </div>
+  
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+        <!--obrisala dva buttona-->
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head card-topline-aqua">
+        <header>About Me</header>
+      </div>
+      <div class="card-body no-padding height-9">
+        <div class="profile-desc">
+          <%= user.description %>
+        </div>
+        <ul class="list-group list-group-unbordered">
+          <li class="list-group-item">
+            <b>Gender </b>
+            <div class="profile-desc-item pull-right"><%= user.gender %></div>
+          </li>
+          <li class="list-group-item">
+            <b>Join date</b>
+            <div class="profile-desc-item pull-right">
+              <%= dayjs(user.joiningDate).format("DD.MM.YYYY.")  %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head card-topline-aqua">
+        <header>Address</header>
+      </div>
+      <div class="card-body no-padding height-9">
+        <div class="row text-center m-t-10">
+          <div class="col-md-12">
+            <p>
+              <%= user.address %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END BEGIN PROFILE SIDEBAR -->

@@ -13,9 +13,9 @@ const UserSchema = new Schema({
     role :{type: String, default: roles.USER},
     birthDate :{type: String, default: null},
     image : {type:String, default: DEFAULT_USER_IMAGE}, // da ima dif sliku
-    joiningDate : {type:String, default: ()=>{
+    joiningDate : {type:Date, default: ()=>{
     
-         return new Date().getTime().toString();
+         return new Date().getTime();
     }}
 
 
