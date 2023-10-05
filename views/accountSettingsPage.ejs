@@ -26,7 +26,7 @@
                             <div class="row">
                                 <%- include('partials/profileNavBar',{page: "settings" }) %>
                                 <div class="white-box">
-                                <form class="card-body row" method="post" action="/admin/profile/update/" enctype="multipart/form-data"> 
+                                <form class="card-body row" method="post" action="/account/settings" enctype="multipart/form-data"> 
                                     <!--mora da se doda ovaj atribut zbog slika (enctype) forma moze da pokupi sliku, input 
                                     polje type file da mozemo da ga koristimo-->
                                     <div class="col-lg-6 p-t-20">
@@ -59,7 +59,7 @@
                                         <div
                                             class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                             <input class="mdl-textfield__input" type="text" id="date"
-                                                value="<%= user.createdAt %>" disabled><!--ne menjamo-->
+                                                value="<%= user.joiningDate %>" disabled><!--ne menjamo-->
                                             <label class="mdl-textfield__label">Joining Date</label>
                                         </div>
                                     </div>
@@ -85,15 +85,15 @@
                                             <label for="sample2" class="mdl-textfield__label">Gender</label>
                                             <ul data-mdl-for="sample2"
                                                 class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                                <li class="mdl-menu__item" data-val="DE">Male</li>
-                                                <li class="mdl-menu__item" data-val="BY">Female</li>
+                                                <li class="mdl-menu__item" data-val="Male">Male</li>
+                                                <li class="mdl-menu__item" data-val="Female">Female</li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 p-t-20">
                                         <div
                                             class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                            <input class="mdl-textfield__input" type="text" value="<%= user.phone %>" name="phone"
+                                            <input class="mdl-textfield__input" type="text" value="<%= user.mobile %>" name="mobile"
                                                 pattern="-?[0-9]*(\.[0-9]+)?" id="text5">
                                             <label class="mdl-textfield__label" for="text5">Mobile Number</label>
                                             <span class="mdl-textfield__error">Number required!</span>
@@ -102,35 +102,28 @@
                                     <div class="col-lg-6 p-t-20">
                                         <div
                                             class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                            <input class="mdl-textfield__input" type="text" id="date2"
-                                                value="<%= user.birthDate %>" name="birthDate">
-                                            <label class="mdl-textfield__label">Birth Date</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 p-t-20">
-                                        <div class="mdl-textfield mdl-js-textfield txt-full-width">
-                                            <textarea class="mdl-textfield__input" rows="4" name="address" 
-                                                id="text7"><%= user.address %></textarea>
-                                            <label class="mdl-textfield__label" for="text7">Address</label>
+                                            <input class="mdl-textfield__input" type="text" 
+                                                value="<%= user.address %>" name="address">
+                                            <label class="mdl-textfield__label">Address</label>
                                         </div>
                                     </div>
                                 
                                     <div class="col-lg-12 p-t-20">
                                         <div class="mdl-textfield mdl-js-textfield txt-full-width">
-                                            <textarea class="mdl-textfield__input" rows="4" name="about" 
-                                                id="text8"><%= user.about %></textarea>
-                                            <label class="mdl-textfield__label" for="text8">About me</label>
+                                            <textarea  class="mdl-textfield__input" rows="4" name="description" 
+                                                id="text8"><%= user.description %></textarea>
+                                            <label class="mdl-textfield__label">About me</label>
                                         </div>
                                     </div>
                                 
                                     <div class="col-lg-12 p-t-20">              
-                                                <label for="inputFile" class="d-flex justify-content-start align-items-center gap-3 cursor-pointer"
-                                                >
+                                                <label for="inputImage" class="d-flex justify-content-start align-items-center gap-3 cursor-pointer"> 
                                                     <span class="control-label ">Upload Profile Image</span>
                                                     <i class="material-icons">cloud_upload</i>         
                                                 </label>
-                                                 <input type="file" name="profile" class="d-none" id="inputFile"> <!--dodat input!-->  
-                                                 <input type="text" name="oldProfile" class="d-none" value="<%= user.profile %>"> <!--dodat input!--> 
+                                                 <input type="file" name="image" class="d-none" id="inputImage"> <!--dodat input!-->  
+                                                 <input type="hidden" name="oldImage" class="d-none" value="<%= user.image %>"> <!--dodat input!--> 
+                                                 <img id="previewImage" src="" class="img-fluid">
                                     </div>
                                  
                                     <div class="col-lg-12 p-t-20 text-center">
@@ -142,9 +135,9 @@
                                 </form>
                                 </div>
                             </div>
-                            <!-- ADD CONTENT HERE -->
                         </div>
                 </div>
+                <script src="assets/js/previewImage.js"></script>
                 <!-- end page content -->
                 <%- include('partials/footer.ejs') %>
             </div>

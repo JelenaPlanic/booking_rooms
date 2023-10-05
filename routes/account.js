@@ -8,4 +8,10 @@ router.get("/settings", verifyAccount, currentUserData, require("../controllers/
 router.get("/change_password", verifyAccount, currentUserData, require("../controllers/account/renderChangePasswordPage"));
 
 
+router.post("/settings", 
+verifyAccount, currentUserData,
+ require("../controllers/account/updateProfile"), 
+ require(
+    "../controllers/account/updateProfileData"));
+
 module.exports = router;

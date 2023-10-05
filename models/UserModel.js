@@ -16,9 +16,8 @@ const UserSchema = new Schema({
     joiningDate : {type:Date, default: ()=>{
     
          return new Date().getTime();
-    }}
-
-
+    }},
+   
 });
 
 

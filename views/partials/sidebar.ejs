@@ -15,11 +15,11 @@
                         <div class="user-panel">
                             <div class="row">
                                 <div class="sidebar-userpic">
-                                    <img src="assets/img/dp.jpg" class="img-responsive" alt=""> </div>
-                            </div>
+                                    <img src="upload/<%= user.image %>" class="img-circle" id="previewImage" alt=""> </div>
+                                   
                             <div class="profile-usertitle">
-                                <div class="sidebar-userpic-name"> John Deo </div>
-                                <div class="profile-usertitle-job"> Manager </div>
+                                <div class="sidebar-userpic-name"> <%= user.firstName %> <%= user.lastName %> </div>
+                                <div class="profile-usertitle-job"> <%= user.role %> </div>
                             </div>
                             <div class="sidebar-userpic-btn">
                                 <a class="tooltips" href="user_profile.html" data-placement="top"
