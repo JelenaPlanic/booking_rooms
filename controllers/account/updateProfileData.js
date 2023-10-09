@@ -1,4 +1,5 @@
 const UserModel = require("../../models/UserModel");
+const createSessionUser = require("../../lib/createSessionUser");
 
 const updateProfileData =  (req, res) => {
 
@@ -20,15 +21,7 @@ const updateProfileData =  (req, res) => {
         )
         .then((foundUser) => {
             console.log("Found:", foundUser);
-            req.session.user = 
-            {
-                _id: foundUser._id,
-                firstName : foundUser.firstName,
-                role : foundUser.role,
-                image : foundUser.image
-
-            };
-
+            req.session.user = createSessionUser(foundUser);
             res.redirect("/account");
             
         })

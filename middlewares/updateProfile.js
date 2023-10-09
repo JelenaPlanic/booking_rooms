@@ -1,4 +1,4 @@
-const fileUpload = require("../../lib/fileUpload");
+const fileUpload = require("../lib/fileUpload");
 
 
 const updateProfile = (req, res, next) => {
@@ -14,6 +14,8 @@ const updateProfile = (req, res, next) => {
     {
         fileUpload(profileImage, oldImage)
         .then((fileName) => {
+            console.log("FileName:", fileName);
+            req.locals = {};
             req.locals.newFileName = fileName;
             next();          
         })

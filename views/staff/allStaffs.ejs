@@ -81,7 +81,7 @@
                                             <td class="center"><%= staff.mobile %></td>
                                             <td class="center"><%= staff.email %></td>
                                             <td class="center"><%= staff.address %></td>
-                                            <td class="center"><%= staff.joiningDate %></td>
+                                            <td class="center"><%= dayjs(staff.joiningDate).format("DD.MM.YYYY.") %></td>
                                             <td class="center">
                                                 <a href="/staff/edit/<%= staff._id %>"
                                                     class="btn btn-tbl-edit btn-xs">

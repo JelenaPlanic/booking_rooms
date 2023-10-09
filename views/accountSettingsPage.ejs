@@ -59,7 +59,7 @@
                                         <div
                                             class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                             <input class="mdl-textfield__input" type="text" id="date"
-                                                value="<%= user.joiningDate %>" disabled><!--ne menjamo-->
+                                                value="<%= dayjs(user.joiningDate).format("DD.MM.YYYY.")%>" disabled> 
                                             <label class="mdl-textfield__label">Joining Date</label>
                                         </div>
                                     </div>

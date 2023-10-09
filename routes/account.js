@@ -10,7 +10,7 @@ router.get("/change_password", verifyAccount, currentUserData, require("../contr
 
 router.post("/settings", 
 verifyAccount, currentUserData,
- require("../controllers/account/updateProfile"), 
+ require("../middlewares/updateProfile"), 
  require(
     "../controllers/account/updateProfileData"));
 

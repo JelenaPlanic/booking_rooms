@@ -1,6 +1,6 @@
 <%- include('../partials/head') %>
 <%- include('../partials/navbar', {user}) %>
-<%- include('../partials/sidebar') %>
+<%- include('../partials/sidebar', {user}) %>
 
 
 	<!-- start page content  za svaki view ovaj content se menja!-->
@@ -72,7 +72,7 @@
                                 <div
                                     class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                     <input class="mdl-textfield__input" type="text" id="date" disabled
-                                        value="<%= foundedStaff.joiningDate %>" name="joiningDate">
+                                        value="<%= dayjs(foundedStaff.joiningDate).format("DD.MM.YYYY.")%>" name="joiningDate">
                                     <label class="mdl-textfield__label">Joining Date</label>
                                 </div>
                             </div>
@@ -141,15 +141,16 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 p-t-20">
-                                <input
-                                  id="inputImage"
-                                  type="file"
-                                  class="form-control mb-3"
-                                  name="image"
-                                />
-                                <img class="img-fluid" id="previewImage" src="upload/<%= foundedStaff.image %>" alt="" />
-                              </div>
+                            <div class="col-lg-12 p-t-20">              
+                                <label for="inputImage" class="d-flex justify-content-start align-items-center gap-3 cursor-pointer"> 
+                                    <span class="control-label ">Upload Profile Image</span>
+                                    <i class="material-icons">cloud_upload</i>         
+                                </label>
+                                 <input type="file" name="image" class="d-none" id="inputImage"> <!--dodat input!-->  
+                                 <input type="hidden" name="oldImage" class="d-none" value="<%= user.image %>"> <!--dodat input!--> 
+                                 <img id="previewImage" src="" class="img-fluid">
+                            </div>
+
                   
                            
                             <div class="col-lg-12 p-t-20 text-center">
