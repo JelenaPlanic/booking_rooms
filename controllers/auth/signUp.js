@@ -1,4 +1,5 @@
 const UserModel = require("../../models/UserModel");
+const sendMail = require("../../lib/sendMail");
 const bcrypt = require("bcrypt");
 const saltRounds = 10; // konf
 
@@ -23,28 +24,35 @@ const signUp = async (req, res)=>{
                         res.render("/error", {error: err.message});
                         return;
                     }
-                    let newUser = new UserModel({email, password : hashPassword});
-                    await newUser.save();
+                   let newUser = new UserModel({email, password : hashPassword});
+                   let savedUser = await newUser.save();
+                   let subject = "Activation account";
+                   let html = `
+                   <p>Click on activation link, to activate your account </p>
+                   <a href = "http://localhost:4000/auth/activate/${savedUser._id}">Activation link<a/>
+                   `;
+                    // poslati link za verifikaciju:
+                    let sendVerifyLink = await sendMail({email, subject, html});
+                    console.log(sendVerifyLink);
                     res.redirect("/login");
-
                 });
             }
             else
             {
-                res.render("/error", {error: "User with this email exists!"});
+                res.render("error", {error: "User with this email exists!"});
             }
         }
         catch(error)
         {
             console.log(error);
-            res.render("/error", {error: error.message});
+            res.render("error", {error: error.message});
         }
         
         
     }
     else
     {
-        res.render("/error");
+        res.render("error");
     }
 
 

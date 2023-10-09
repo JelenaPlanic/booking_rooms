@@ -17,6 +17,7 @@ const UserSchema = new Schema({
     
          return new Date().getTime();
     }},
+    isActivate: {type:Boolean, default: false}
    
 });
 
