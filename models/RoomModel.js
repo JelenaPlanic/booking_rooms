@@ -13,7 +13,8 @@ const RoomSchema = new Schema(
         rentPerNight:  {type: Number, default:null},
         image : {type: String, default:DEFAULT_ROOM_IMAGE},
         desc:  {type: String, default:null},
-        cancellation :  {type: String, default:null}
+        cancellation :  {type: String, default:null},
+        reserved: {type:Boolean, default:false}
         
     }
 );
