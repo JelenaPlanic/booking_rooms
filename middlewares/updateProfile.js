@@ -3,25 +3,23 @@ const fileUpload = require("../lib/fileUpload");
 
 const updateProfile = (req, res, next) => {
 
-    const profileImage = req.files?  req.files : false;
-    const {oldImage, ...userData} = req.body;
+    const file = req.files?  req.files : false;
+    console.log("File: ", file);
+    const {oldImage} = req.body;
 
-    console.log(profileImage);
-    console.log(oldImage);
-
-
-    if(profileImage)
+    console.log("Old image :",oldImage);
+    if(file)
     {
-        fileUpload(profileImage, oldImage)
+        fileUpload(file, oldImage)
         .then((fileName) => {
-            console.log("FileName:", fileName);
+            //console.log("FileName:", fileName);
             req.locals = {};
             req.locals.newFileName = fileName;
             next();          
         })
         .catch((error) => {
             console.log(error);
-            res.render("error", {error});
+            res.render("error", {error:error.message});
         })
     }
     else

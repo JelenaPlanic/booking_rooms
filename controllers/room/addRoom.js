@@ -1,6 +1,8 @@
 const fileUpload = require("../../lib/fileUpload"); // asihrona f-ja
 const RoomModel = require("../../models/RoomModel"); // baza
+const {DEFAULT_ROOM_IMAGE} = require("../../config/config");
 
+// nece dodati u bazu ako nema slike (Ispravi)
 const addRoom = async (req, res) => {
 
     const inputData = req.body;
@@ -12,7 +14,7 @@ const addRoom = async (req, res) => {
     try
     {
         let fileName = await fileUpload(file);
-        let newRoom = new RoomModel({...inputData, image:fileName});
+        let newRoom = new RoomModel({...inputData, image: fileName?? DEFAULT_ROOM_IMAGE });
         await newRoom.save();
         res.redirect(req.headers.referer); //  // kako ja da znam odakle sam uputio req, mozda hocu da ga redirekt na istu stranicu!
     }
