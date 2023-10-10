@@ -1,6 +1,7 @@
 const UserModel = require("../../models/UserModel");
 const sendMail = require("../../lib/sendMail");
 const bcrypt = require("bcrypt");
+const { BASE_URL } = require("../../config/config");
 const saltRounds = 10; // konf
 
 const signUp = async (req, res)=>{
@@ -29,7 +30,7 @@ const signUp = async (req, res)=>{
                    let subject = "Activation account";
                    let html = `
                    <p>Click on activation link, to activate your account </p>
-                   <a href = "http://localhost:4000/auth/activate/${savedUser._id}">Activation link<a/>
+                   <a href ="${BASE_URL}/auth/activate/${savedUser._id}">Activation link<a/>
                    `;
                     // poslati link za verifikaciju:
                     let sendVerifyLink = await sendMail({email, subject, html});
