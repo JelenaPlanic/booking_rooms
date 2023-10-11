@@ -3,7 +3,7 @@ require("dotenv").config();
 const {PORT = 3000, NODE_ENV = "development"} = process.env; // destrukcija sa dif vrednoscu
 const HALF_DAY = 1000 * 60 * 60 *12 ;
 const IN_PRODUCTION = NODE_ENV === "production"; // true/false (kada podignemo, automat ce biti za ovaj env dodat product)
-const BASE_URL = IN_PRODUCTION ? "" : "http://localhost:3000";
+const BASE_URL = IN_PRODUCTION ? "" : "http://localhost:4000";
 
 
 const roles =  // poverljivo
