@@ -1,0 +1,120 @@
+<%- include('../partials/head') %>
+    <%- include('../partials/navbar', {user}) %>
+        <%- include('../partials/sidebar', {user}) %>
+
+
+            <!-- start page content  za svaki view ovaj content se menja!-->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">Add Room Booking</div>
+                            </div>
+                            <ol class="breadcrumb page-breadcrumb pull-right">
+                                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                                        href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                                </li>
+                                <li class="active">Booking</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!--ADD CONTENT HERE-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <div class="card-box">
+                            <div class="card-head">
+                              <header>Add Room Booking</header>
+                              <button
+                                id="panel-button"
+                                class="mdl-button mdl-js-button mdl-button--icon pull-right"
+                                data-upgraded=",MaterialButton"
+                              >
+                                <i class="material-icons">more_vert</i>
+                              </button>
+                              <ul
+                                class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                                data-mdl-for="panel-button"
+                              >
+                                <li class="mdl-menu__item">
+                                  <i class="material-icons">assistant_photo</i>Action
+                                </li>
+                                <li class="mdl-menu__item">
+                                  <i class="material-icons">print</i>Another action
+                                </li>
+                                <li class="mdl-menu__item">
+                                  <i class="material-icons">favorite</i>Something else here
+                                </li>
+                              </ul>
+                            </div>
+
+                            <form action="/booking/addBooking" method="post" class="card-body row">
+                            <input type="hidden" value="<%= user._id %>" name="guestID">
+                            <div class="col-lg-6 p-t-20">
+                                <div
+                                    class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                    <input class="mdl-textfield__input" type="text" value="<%= user.firstName %>" 
+                                        id="txtFirstName">
+                                    <label class="mdl-textfield__label">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-t-20">
+                                <div
+                                    class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                    <input class="mdl-textfield__input" type="text" id="txtEndDate"
+                                        name="startDate"> 
+                                    <label class="mdl-textfield__label">Start date</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-t-20">
+                                <div
+                                    class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                    <input class="mdl-textfield__input" type="text" id="date"
+                                        name="endDate"> 
+                                    <label class="mdl-textfield__label">End date</label>
+                                </div>
+                            </div>
+                               
+                            <div class="col-lg-6 p-t-20">
+                                <div
+                                    class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                    <input class="mdl-textfield__input" type="number" name="price"  
+                                        id="txtFirstName">
+                                    <label class="mdl-textfield__label">Price</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-t-20">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
+                                    <label for="sample2" class="mdl-textfield--floating-label">Room Number</label> 
+                                  <select data-mdl-for="sample2"
+                                  class="form-control" name="roomID">
+                                    <% for( let i = 0; i < allRooms.length; i++ ) { %>
+                                        <option class="text-dark" value="<%= allRooms[i]._id %>"><%= allRooms[i].roomNumber %></option>
+                                    <% } %>
+                                  </select>
+                                  <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                                </div>
+                              </div>
+                          
+                            <div class="col-lg-12 p-t-20 text-center">
+                                <button
+                                  type="submit"
+                                  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink"
+                                >
+                                  Submit
+                                </button>
+                                <button
+                                  type="button"
+                                  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default"
+                                >
+                                  Cancel
+                                </button>
+                              </div>
+                            </form>
+                        </div>
+                     </div>
+                  </div>
+                </div>
+            </div>
+            <%- include('../partials/footer') %>

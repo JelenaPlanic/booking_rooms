@@ -2,14 +2,14 @@ const {Schema, model} = require("mongoose"); // cuvamo rezervisane sobe
 
 const BookingSchema = new Schema(
     {
-        roomId:{type: Schema.Types.ObjectId, required: true},
-        guestId: {type: Schema.Types.ObjectId, required: true},
+        roomID:{type: Schema.Types.ObjectId, required: true}, // soba koja je rezervisana
+        guestID: {type: Schema.Types.ObjectId, required: true}, // gost koji je napravio rezervaciju
         startDate:{type: Date, required: true},
         endDate: {type: Date, required: true},
         price:{type:Number, required: true}       
     },
     {
-        timestamps:true
+        timestamps:true // opcioni objekat
     }
 );
 

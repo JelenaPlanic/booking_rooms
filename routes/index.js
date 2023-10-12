@@ -16,6 +16,7 @@ router.use("/dashboard",verifyAuth, require("./dashboard"));
 router.use("/room",verifyAuth, require("./room"));
 router.use("/staff",verifyAuth, require("./staff"));
 router.use("/account", verifyAuth, require("./account"));
+router.use("/booking", require("./booking"));
 
 
 // bvz URL ADRESA: ruta koja ne postoji, da mi renderuje view 404
