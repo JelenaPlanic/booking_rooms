@@ -1,0 +1,69 @@
+<%- include('../partials/head.ejs') %> <%- include('../partials/navbar.ejs',{user}) %>
+<%- include('../partials/sidebar.ejs',{user}) %>
+<!-- start page content -->
+<div class="page-content-wrapper">
+  <div class="page-content">
+    <div class="page-bar">
+      <div class="page-title-breadcrumb">
+        <div class="pull-left">
+          <div class="page-title">My Bookings</div>
+        </div>
+        <ol class="breadcrumb page-breadcrumb pull-right">
+          <li>
+            <i class="fa fa-home"></i>&nbsp;<a
+              class="parent-item"
+              href="index.html"
+              >Home</a
+            >&nbsp;<i class="fa fa-angle-right"></i>
+          </li>
+          <li class="active">Dashboard</li>
+        </ol>
+      </div>
+    </div>
+    <!-- ADD CONTENT HERE -->
+    <div class="table-scrollable">
+        <table
+          class="table table-hover table-checkable order-column full-width"
+          id="example4">
+          <thead>
+            <tr>
+                <th class="center">img</th>
+                <th class="center">#</th>
+                <th class="center">Type</th>
+                <th class="center">Start Date</th>
+                <th class="center">End Date</th>
+                <th class="center">Price</th>
+                <th class="center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+                <% bookings.forEach(booking => {  %>
+                    <tr>
+                    <td class="center">  <img src="upload/<%= booking.myRooms[0].image %>" alt="" class="img-fluid"
+                            style="width: 50px; height: 50px;"/></td>                
+                    <td class="center"><%= booking.myRooms[0].roomNumber %></td>
+                    <td class="center"><%= booking.myRooms[0].roomType %></td>
+                    <td class="center"><%= dayjs(booking.startDate).format("DD.MM.YYYY.") %></td>
+                    <td class="center"><%= dayjs(booking.endDate).format("DD.MM.YYYY.") %></td>
+                    <td class="center"><%= booking.price %></td>
+
+                    <td class="center">
+                        <a
+                          href="/room/edit/<%= booking._id %>"
+                          class="btn btn-tbl-edit btn-xs"
+                        >
+                          <i class="fa fa-pencil"></i>
+                        </a>
+                        <a class="btn btn-tbl-delete btn-xs">
+                          <i class="fa fa-trash-o"></i>
+                        </a>
+                     </td>
+                </tr>
+                    <%  }); %>
+          </tbody>
+        </table>
+    </div>
+ </div>
+</div>
+    <!-- end page content -->
+<%- include('../partials/footer.ejs') %>
