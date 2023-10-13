@@ -21,9 +21,6 @@ const editStaff = async (req, res) => {
                 );
 
             console.log("Edit staff:", foundedStaff);
-
-            req.session.user = createSessionUser(foundedStaff);
-
             res.redirect("/staff");
             
         } catch (error) {

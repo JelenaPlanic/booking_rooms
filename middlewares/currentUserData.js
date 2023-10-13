@@ -9,7 +9,7 @@ async function currentUserData(req, res, next)
             throw new Error("User not found!");
         }
         // mozda treba da ispraznim locals!
-        req.locals = user;
+        req.locals = user; 
         next();
     }
     catch(error)

@@ -15,4 +15,6 @@ verifyAccount, currentUserData,
  require(
     "../controllers/account/updateProfileData"));
 
+ router.post("/change_password", verifyAccount,currentUserData, require("../controllers/account/changePassword"));   
+
 module.exports = router;
