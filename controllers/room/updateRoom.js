@@ -3,6 +3,7 @@ const RoomModel = require("../../models/RoomModel");
 const updateRoom = async (req, res) => {
     const {id} = req.params;
     const {oldImage, ...roomToUpdate} = req.body;
+    const image  = req.locals?.newFileName? req.locals.newFileName : oldImage;
 
     console.log("ID:", id);
     console.log("Room to update:", roomToUpdate);
@@ -14,7 +15,7 @@ const updateRoom = async (req, res) => {
                 _id: id
             },
             {
-                $set: {...roomToUpdate, image: req.locals?.newFileName || oldImage}
+                $set: {...roomToUpdate, image: image}
             }, 
             {
                 new: true

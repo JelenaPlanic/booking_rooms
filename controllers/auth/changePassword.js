@@ -13,7 +13,7 @@ const changePassword = async(req, res) => {
              let updateResult = await UserModel.updateOne({email}, {$set:{password: hashPassword} });
              if(updateResult.modifiedCount === 1)
              {
-                req.session.destroy();
+                req.session.destroy(); // dodali smo jos jedan prop u sesiji i unistavamo ga
                 res.redirect("/");
              }
                 
