@@ -1,9 +1,10 @@
 const UserModel = require("../../models/UserModel");
 const createSessionUser = require("../../lib/createSessionUser");
+const { DEFAULT_USER_IMAGE } = require("../../config/config");
 
 const updateProfileData =  (req, res) => {
 
-    let fileName = req.locals.newFileName;
+    let fileName = req.locals.newFileName? req.locals.newFileName : DEFAULT_USER_IMAGE;
     console.log(fileName);
     console.log(req.body);
 
@@ -20,8 +21,15 @@ const updateProfileData =  (req, res) => {
         } 
         )
         .then((foundUser) => {
-            console.log("Found:", foundUser);
-            req.session.user = createSessionUser(foundUser);
+            console.log("Found:OVAJ DEO", foundUser);
+        //    req.session.user = 
+        //    {
+        //      _id : foundUser._id,
+        //      firstName: foundUser.firstName,
+        //      role : foundUser.role,
+        //      image : foundUser.image
+
+        //    }
             res.redirect("/account");
             
         })

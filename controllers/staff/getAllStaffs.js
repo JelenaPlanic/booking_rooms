@@ -6,7 +6,7 @@ const getAllStaffs = async (req, res) => {
     try 
     {
         let staffs = await UserModel.find({});
-        res.render("staff/allStaffs", {staffs, user: req.session.user, dayjs});
+        res.render("staff/allStaffs", {staffs, user: req.session.user, dayjs, error: null});
         
     } catch (error) {
         

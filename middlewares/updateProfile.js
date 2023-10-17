@@ -13,7 +13,6 @@ const updateProfile = (req, res, next) => {
         fileUpload(file, oldImage)
         .then((fileName) => {
             //console.log("FileName:", fileName);
-            req.locals = {};
             req.locals.newFileName = fileName;
             next();          
         })

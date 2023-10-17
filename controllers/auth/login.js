@@ -7,7 +7,7 @@ const login = async (req, res)=>{
 
     try
     {
-        let foundUser = await UserModel.findOne({email}); // vraca objekat ili null
+        let foundUser = await UserModel.findOne({email, isActivate: true}); // vraca objekat ili null
 
         if(foundUser) // da li postoji user?
         {

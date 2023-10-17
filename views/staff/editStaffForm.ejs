@@ -72,7 +72,7 @@
                                 <div
                                     class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                     <input class="mdl-textfield__input" type="text" id="date" disabled
-                                        value="<%= dayjs(foundedStaff.joiningDate).format("DD.MM.YYYY.")%>" name="joiningDate">
+                                        value="<%= dayjs(foundedStaff.joiningDate).format("DD.MM.YYYY.")%>"> <!--name (nema ga, nece se slati u bazu)-->
                                     <label class="mdl-textfield__label">Joining Date</label>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                                 </label>
                                  <input type="file" name="image" class="d-none" id="inputImage"> <!--dodat input!-->  
                                  <input type="hidden" name="oldImage" class="d-none" value="<%= user.image %>"> <!--dodat input!--> 
-                                 <img id="previewImage" src="upload/<%= user.image %>" class="img-fluid" >
+                                 <img id="previewImage" src="upload/<%= foundedStaff.image %>" class="img-fluid" >
                             </div>
 
                   

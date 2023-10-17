@@ -4,13 +4,24 @@ const router = Router();
 
 router.get("/", (req, res)=>{
 
-    res.render("sign_up");
+    res.render("login");
 })
 
-router.get("/login", (req, res)=>{ // staticna ruta
+router.get("/signup", (req, res)=>{ // staticna ruta
 
-    res.render("login");
+    res.render("sign_up");
 });
+
+// forgot password:
+router.get("/forgotPassword", (req, res)=>{ 
+
+    res.render("forgotPassword");
+});
+
+
+
+
+
 router.use("/auth", require("./auth"));
 router.use("/dashboard",verifyAuth, require("./dashboard"));
 router.use("/room",verifyAuth, require("./room"));
